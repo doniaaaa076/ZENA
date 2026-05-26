@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZENA — Safe and Chic, Never Weak</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --burgundy: #6B1E2E;
+    --burgundy-dark: #4a1220;
+    --burgundy-light: #8B2E42;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --beige: #F5EFE0;
+    --beige-dark: #E8DFC9;
+    --cream: #FAF7F2;
+    --white: #FFFFFF;
+    --text-dark: #2A1A1A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text-dark);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(250,247,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--burgundy);
+    letter-spacing: 0.15em;
+    font-weight: 700;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--burgundy-dark); text-decoration: none; font-weight: 500;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--burgundy-dark) 0%, var(--burgundy) 50%, var(--burgundy-light) 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding-top: 80px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.15) 0%, transparent 60%);
+  }
+  .hero-decor {
+    position: absolute; font-family: 'Playfair Display', serif;
+    font-size: 18rem; font-weight: 700; color: rgba(255,255,255,0.03);
+    letter-spacing: -0.05em; pointer-events: none; user-select: none;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+  }
+  .hero-content {
+    text-align: center; z-index: 2; padding: 2rem;
+    animation: fadeUp 1s ease both;
+  }
+  .hero-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 1.5rem; font-weight: 500;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    color: var(--white); line-height: 0.95;
+    margin-bottom: 1rem; font-weight: 700;
+  }
+  .hero-title em { color: var(--gold); font-style: italic; }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: rgba(245,239,224,0.8); margin-bottom: 2.5rem;
+    font-style: italic; letter-spacing: 0.05em;
+  }
+  .hero-slogan {
+    font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 3rem;
+  }
+  .btn-gold {
+    display: inline-block; padding: 1rem 3rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--burgundy-dark); font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; text-decoration: none; font-weight: 600;
+    transition: all 0.3s; border: none; cursor: pointer;
+  }
+  .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.4); }
+
+  /* ── BRACELET VISUAL ── */
+  .bracelet-visual {
+    width: 200px; height: 200px; margin: 0 auto 3rem;
+    position: relative;
+  }
+  .bracelet-ring {
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    border: 6px solid var(--gold);
+    animation: rotate 20s linear infinite;
+  }
+  .bracelet-ring::before {
+    content: '';
+    position: absolute; width: 14px; height: 14px;
+    background: var(--gold-light); border-radius: 50%;
+    top: -7px; left: 50%; transform: translateX(-50%);
+    box-shadow: 0 0 20px var(--gold);
+  }
+  .bracelet-inner {
+    position: absolute; inset: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.15), transparent);
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .bracelet-z {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; color: var(--gold); font-weight: 700;
+    text-shadow: 0 0 30px rgba(201,168,76,0.5);
+  }
+
+  /* ── STORY ── */
+  .story {
+    background: var(--cream);
+    padding: 8rem 3rem;
+    max-width: 900px; margin: 0 auto; text-align: center;
+  }
+  .section-tag {
+    font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem; display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--burgundy-dark); margin-bottom: 2rem; line-height: 1.2;
+  }
+  .section-title em { font-style: italic; color: var(--burgundy); }
+  .story-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; line-height: 1.8; color: #4a3030;
+    max-width: 700px; margin: 0 auto 2rem;
+  }
+  .gold-divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 3rem auto;
+  }
+
+  /* ── FEATURES ── */
+  .features {
+    background: var(--burgundy-dark);
+    padding: 8rem 3rem;
+  }
+  .features-inner { max-width: 1100px; margin: 0 auto; }
+  .features-header { text-align: center; margin-bottom: 5rem; }
+  .features-header .section-title { color: var(--beige); }
+  .features-header .section-tag { color: var(--gold-light); }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.5rem;
+  }
+  .feature-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 2.5rem 2rem;
+    transition: all 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .feature-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.5); }
+  .feature-card:hover::before { opacity: 1; }
+  .feature-icon {
+    font-size: 2rem; margin-bottom: 1.2rem;
+    display: block;
+  }
+  .feature-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; color: var(--gold-light);
+    margin-bottom: 0.8rem;
+  }
+  .feature-desc {
+    font-size: 0.8rem; line-height: 1.7;
+    color: rgba(245,239,224,0.65); font-weight: 300;
+  }
+
+  /* ── CGR SYSTEM ── */
+  .cgr {
+    background: var(--beige);
+    padding: 8rem 3rem;
+  }
+  .cgr-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: center;
+  }
+  .cgr-visual {
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .cgr-step {
+    display: flex; align-items: center; gap: 1.5rem;
+    padding: 1.2rem 1.5rem;
+    background: white;
+    border-left: 3px solid var(--gold);
+    box-shadow: 0 4px 20px rgba(107,30,46,0.06);
+  }
+  .cgr-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 700; color: var(--burgundy);
+    min-width: 50px; text-align: center;
+  }
+  .cgr-desc { font-size: 0.8rem; line-height: 1.6; color: #5a3535; }
+  .cgr-desc strong { display: block; font-size: 0.85rem; color: var(--burgundy-dark); margin-bottom: 0.2rem; }
+  .cgr-text .section-title { text-align: left; }
+  .cgr-text .section-tag { text-align: left; }
+  .cgr-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; line-height: 1.8; color: #4a3030; margin-top: 1.5rem;
+  }
+
+  /* ── COLLECTION ── */
+  .collection {
+    background: var(--cream);
+    padding: 8rem 3rem; text-align: center;
+  }
+  .collection-inner { max-width: 1100px; margin: 0 auto; }
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem; margin-top: 4rem;
+  }
+  .product-card {
+    background: white;
+    border: 1px solid var(--beige-dark);
+    padding: 2rem 1.5rem;
+    transition: all 0.3s; cursor: pointer;
+  }
+  .product-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 8px 30px rgba(107,30,46,0.1);
+    transform: translateY(-4px);
+  }
+  .product-emoji { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+  .product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; color: var(--burgundy-dark); margin-bottom: 0.4rem;
+  }
+  .product-inspiration {
+    font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.8rem;
+  }
+  .product-price {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem; font-weight: 600; color: var(--burgundy);
+  }
+
+  /* ── WHO ── */
+  .who {
+    background: linear-gradient(180deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+    padding: 8rem 3rem; text-align: center;
+  }
+  .who-inner { max-width: 900px; margin: 0 auto; }
+  .who .section-title { color: var(--beige); }
+  .who .section-tag { color: var(--gold-light); }
+  .targets-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2rem; margin-top: 4rem;
+  }
+  .target-item {
+    padding: 2rem;
+    border: 1px solid rgba(201,168,76,0.25);
+    transition: border-color 0.3s;
+  }
+  .target-item:hover { border-color: var(--gold); }
+  .target-icon { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+  .target-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; color: var(--gold-light); margin-bottom: 0.6rem;
+  }
+  .target-desc {
+    font-size: 0.75rem; line-height: 1.6;
+    color: rgba(245,239,224,0.6); font-weight: 300;
+  }
+
+  /* ── VALUES ── */
+  .values {
+    background: var(--cream);
+    padding: 8rem 3rem; text-align: center;
+  }
+  .values-inner { max-width: 900px; margin: 0 auto; }
+  .values-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 3rem; margin-top: 4rem;
+  }
+  .value-item {}
+  .value-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; color: var(--beige-dark); font-weight: 700;
+    line-height: 1;
+  }
+  .value-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; color: var(--burgundy); margin: 0.5rem 0;
+  }
+  .value-text {
+    font-size: 0.75rem; line-height: 1.7; color: #6a4a4a; font-weight: 300;
+  }
+
+  /* ── APP ── */
+  .app-section {
+    background: var(--burgundy-dark);
+    padding: 8rem 3rem;
+  }
+  .app-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: center;
+  }
+  .app-phone {
+    display: flex; justify-content: center;
+  }
+  .phone-mockup {
+    width: 200px; height: 380px;
+    background: rgba(255,255,255,0.05);
+    border: 2px solid rgba(201,168,76,0.4);
+    border-radius: 30px;
+    padding: 20px 15px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .phone-notch {
+    width: 60px; height: 8px;
+    background: rgba(201,168,76,0.3);
+    border-radius: 4px;
+    margin: 0 auto 20px;
+  }
+  .phone-screen {
+    background: rgba(107,30,46,0.3);
+    border-radius: 16px;
+    height: calc(100% - 48px);
+    padding: 15px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .phone-app-name {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold); text-align: center; font-size: 1rem;
+  }
+  .phone-status {
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 8px; padding: 8px 10px;
+    font-size: 0.55rem; color: rgba(245,239,224,0.7);
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .phone-map {
+    flex: 1;
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+  }
+  .phone-sos {
+    background: var(--burgundy);
+    border-radius: 8px; padding: 8px;
+    text-align: center;
+    font-size: 0.55rem; color: var(--gold-light); letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 600;
+  }
+  .app-text {}
+  .app-text .section-title { color: var(--beige); text-align: left; }
+  .app-text .section-tag { text-align: left; color: var(--gold-light); }
+  .app-features { margin-top: 2rem; }
+  .app-feature {
+    display: flex; align-items: flex-start; gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .app-check {
+    width: 20px; height: 20px; min-width: 20px;
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem; color: var(--gold); margin-top: 0.1rem;
+  }
+  .app-feature-text {
+    font-size: 0.8rem; line-height: 1.6;
+    color: rgba(245,239,224,0.7); font-weight: 300;
+  }
+  .app-feature-text strong { color: var(--gold-light); display: block; margin-bottom: 0.1rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--burgundy-dark);
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding: 4rem 3rem 2rem;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; color: var(--white);
+    letter-spacing: 0.3em; font-weight: 700; margin-bottom: 0.5rem;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-slogan {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; color: rgba(245,239,224,0.5);
+    letter-spacing: 0.1em; font-size: 0.9rem; margin-bottom: 3rem;
+  }
+  .footer-links {
+    display: flex; justify-content: center; gap: 3rem;
+    list-style: none; margin-bottom: 3rem;
+  }
+  .footer-links a {
+    font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(245,239,224,0.4); text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    font-size: 0.6rem; color: rgba(245,239,224,0.25); letter-spacing: 0.1em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .cgr-inner, .app-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .targets-grid, .values-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .story, .features, .cgr, .collection, .who, .values, .app-section { padding: 5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Z<span>E</span>NA</div>
+  <ul class="nav-links">
+    <li><a href="#story">Notre Histoire</a></li>
+    <li><a href="#features">Le Bracelet</a></li>
+    <li><a href="#collection">Collection</a></li>
+    <li><a href="#app">L'App</a></li>
+    <li><a href="#shop">Boutique</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-decor">Z</div>
+  <div class="hero-content">
+    <div class="bracelet-visual">
+      <div class="bracelet-ring"></div>
+      <div class="bracelet-inner">
+        <span class="bracelet-z">Z</span>
+      </div>
+    </div>
+    <p class="hero-eyebrow">Le bracelet de sécurité nouvelle génération</p>
+    <h1 class="hero-title">ZENA<br><em>Bracelet</em></h1>
+    <p class="hero-sub">Élégance & Protection, au bout du poignet.</p>
+    <p class="hero-slogan">Safe and Chic, Never Weak</p>
+    <a href="#features" class="btn-gold">Découvrir</a>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <span class="section-tag">Notre Histoire</span>
+  <h2 class="section-title">Née d'un besoin <em>réel</em></h2>
+  <p class="story-text">
+    ZENA est née d'une conviction simple : personne ne devrait avoir peur de rentrer chez soi. Inspiré par les femmes qui nous entourent, par leurs histoires et leurs peurs, nous avons voulu créer quelque chose de plus qu'un accessoire de sécurité.
+  </p>
+  <div class="gold-divider"></div>
+  <p class="story-text">
+    Un bijou. Quelque chose que l'on porte avec fierté, qui s'accorde à chaque tenue, et qui veille sur vous en silence. ZENA, comme Xena la Princesse Guerrière : force, élégance et courage réunis.
+  </p>
+  <div class="gold-divider"></div>
+  <p class="story-text" style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.4rem;color:var(--burgundy);">
+    "Nous ne voulions pas créer un objet de peur. Nous voulions créer un objet de confiance."
+  </p>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="features-inner">
+    <div class="features-header">
+      <span class="section-tag">Le Bracelet</span>
+      <h2 class="section-title" style="color:var(--beige);">Un bijou qui vous <em style="color:var(--gold);">protège</em></h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">📍</span>
+        <div class="feature-title">Géolocalisation GPS</div>
+        <p class="feature-desc">Votre position en temps réel partagée instantanément avec vos proches. Fonctionne même sans smartphone, grâce à la nano SIM intégrée.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔔</span>
+        <div class="feature-title">Alarme Sonore</div>
+        <p class="feature-desc">Un double appui déclenche une alarme puissante qui attire l'attention et dissuade tout agresseur potentiel.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🚨</span>
+        <div class="feature-title">Alerte Proches & Secours</div>
+        <p class="feature-desc">Un simple appui alerte vos contacts d'urgence. La police et vos proches reçoivent votre localisation par SMS.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⚡</span>
+        <div class="feature-title">Système CGR Automatique</div>
+        <p class="feature-desc">Détection automatique du danger via trois capteurs : Cri, Geste brusque, Rythme cardiaque. S'active sans que vous ayez à rien faire.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">💎</span>
+        <div class="feature-title">Design Interchangeable</div>
+        <p class="feature-desc">La puce ZENA s'adapte à tous nos modèles de bracelets. Changez de look sans changer de puce — pour l'environnement et votre style.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🛡️</span>
+        <div class="feature-title">Waterproof & Durable</div>
+        <p class="feature-desc">Acier inoxydable hypoallergénique, résine époxy résistante à l'eau et aux rayures. Batterie 1 an. Portez-le partout, tout le temps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CGR -->
+<section class="cgr">
+  <div class="cgr-inner">
+    <div class="cgr-visual">
+      <div class="cgr-step">
+        <div class="cgr-letter">C</div>
+        <div class="cgr-desc">
+          <strong>Cri détecté</strong>
+          Le micro intégré analyse le son ambiant et reconnaît un cri de détresse.
+        </div>
+      </div>
+      <div class="cgr-step">
+        <div class="cgr-letter">G</div>
+        <div class="cgr-desc">
+          <strong>Geste brusque</strong>
+          L'accéléromètre détecte un mouvement soudain caractéristique d'une agression.
+        </div>
+      </div>
+      <div class="cgr-step">
+        <div class="cgr-letter">R</div>
+        <div class="cgr-desc">
+          <strong>Rythme cardiaque</strong>
+          Le capteur mesure une hausse anormale de la fréquence cardiaque liée au stress.
+        </div>
+      </div>
+    </div>
+    <div class="cgr-text">
+      <span class="section-tag">Technologie Exclusive</span>
+      <h2 class="section-title">Le système <em>CGR</em></h2>
+      <p>Quand les trois conditions sont réunies simultanément, ZENA s'active automatiquement — sans que vous ayez à appuyer sur quoi que ce soit. Parce que sous le stress, chaque seconde compte.</p>
+      <p style="margin-top:1rem;">Ce système peut être activé ou désactivé à tout moment depuis l'application ZENAPP, pour éviter les fausses alertes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="collection" id="collection">
+  <div class="collection-inner">
+    <span class="section-tag">Notre Collection</span>
+    <h2 class="section-title">Des modèles pour <em>chaque style</em></h2>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#6a4a4a;max-width:600px;margin:1rem auto 0;line-height:1.7;">
+      Des dupes luxe inspirés des plus grandes maisons, à un prix accessible. La même puce ZENA, des looks infinis.
+    </p>
+    <div class="collection-grid">
+      <div class="product-card">
+        <span class="product-emoji">🌸</span>
+        <div class="product-name">Tréfle d'Or</div>
+        <div class="product-inspiration">Inspiré Van Cleef</div>
+        <div class="product-price">80 €</div>
+      </div>
+      <div class="product-card">
+        <span class="product-emoji">🟠</span>
+        <div class="product-name">Tresse Dorée</div>
+        <div class="product-inspiration">Inspiré Hermès</div>
+        <div class="product-price">80 €</div>
+      </div>
+      <div class="product-card">
+        <span class="product-emoji">✨</span>
+        <div class="product-name">Maille Florentine</div>
+        <div class="product-inspiration">Inspiré Buccellati</div>
+        <div class="product-price">80 €</div>
+      </div>
+      <div class="product-card">
+        <span class="product-emoji">🌿</span>
+        <div class="product-name">Nature & Bois</div>
+        <div class="product-inspiration">Inspiré Holzkern</div>
+        <div class="product-price">80 €</div>
+      </div>
+      <div class="product-card">
+        <span class="product-emoji">⭐</span>
+        <div class="product-name">Petit Trésor</div>
+        <div class="product-inspiration">Édition Enfants</div>
+        <div class="product-price">80 €</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="who">
+  <div class="who-inner">
+    <span class="section-tag">Pour Qui</span>
+    <h2 class="section-title">ZENA protège <em style="color:var(--gold);">tout le monde</em></h2>
+    <div class="targets-grid">
+      <div class="target-item">
+        <span class="target-icon">👩</span>
+        <div class="target-label">Les Femmes</div>
+        <p class="target-desc">Notre cible principale. 19,4 % des femmes ont été victimes de violence. ZENA vous donne confiance pour rentrer seule, courir le soir, voyager librement.</p>
+      </div>
+      <div class="target-item">
+        <span class="target-icon">👴</span>
+        <div class="target-label">Les Seniors</div>
+        <p class="target-desc">Chutes, pertes de mémoire, isolement : ZENA géolocalise et alerte les proches en cas d'urgence, pour vivre sereinement son autonomie.</p>
+      </div>
+      <div class="target-item">
+        <span class="target-icon">👧</span>
+        <div class="target-label">Les Enfants</div>
+        <p class="target-desc">105 enfants signalés disparus chaque jour en France. Le Petit Trésor ZENA rassure les parents et protège les trajets scolaires.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="values-inner">
+    <span class="section-tag">Nos Valeurs</span>
+    <h2 class="section-title">Ce qui nous <em>définit</em></h2>
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="value-num">01</div>
+        <div class="value-title">Respect</div>
+        <p class="value-text">Chaque personne mérite d'être traitée avec dignité. Nous construisons ZENA sur cette conviction — envers notre équipe comme envers nos clients.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-num">02</div>
+        <div class="value-title">Connexion</div>
+        <p class="value-text">Les liens humains sont au cœur de notre mission. ZENA ne vous protège pas seul·e — elle vous relie à ceux qui vous aiment.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-num">03</div>
+        <div class="value-title">Responsabilité</div>
+        <p class="value-text">Puce interchangeable, réduction des déchets, matériaux durables. Parce que se protéger ne doit pas coûter la planète.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APP -->
+<section class="app-section" id="app">
+  <div class="app-inner">
+    <div class="app-phone">
+      <div class="phone-mockup">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-app-name">ZENAPP</div>
+          <div class="phone-status">🟢 Bracelet connecté</div>
+          <div class="phone-map">🗺️</div>
+          <div class="phone-status">📍 Localisation partagée</div>
+          <div class="phone-sos">— SOS —</div>
+        </div>
+      </div>
+    </div>
+    <div class="app-text">
+      <span class="section-tag">L'Application</span>
+      <h2 class="section-title">ZENAPP — <em style="color:var(--gold);">votre centre de contrôle</em></h2>
+      <div class="app-features">
+        <div class="app-feature">
+          <div class="app-check">✓</div>
+          <div class="app-feature-text">
+            <strong>Activation / Désactivation</strong>
+            Contrôlez votre bracelet et le système CGR en un tap, à tout moment.
+          </div>
+        </div>
+        <div class="app-feature">
+          <div class="app-check">✓</div>
+          <div class="app-feature-text">
+            <strong>Contacts d'urgence</strong>
+            Choisissez les personnes qui reçoivent votre localisation en cas d'alerte.
+          </div>
+        </div>
+        <div class="app-feature">
+          <div class="app-check">✓</div>
+          <div class="app-feature-text">
+            <strong>Boutique intégrée</strong>
+            Commandez de nouveaux modèles directement depuis l'app. Gardez votre puce, changez votre style.
+          </div>
+        </div>
+        <div class="app-feature">
+          <div class="app-check">✓</div>
+          <div class="app-feature-text">
+            <strong>Configuration simple</strong>
+            Créez votre compte, entrez l'ID de votre puce, et c'est parti. En moins de 2 minutes.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="shop">
+  <div class="footer-logo">Z<span>E</span>NA</div>
+  <div class="footer-slogan">"Safe and Chic, Never Weak"</div>
+  <ul class="footer-links">
+    <li><a href="#">Collection</a></li>
+    <li><a href="#">Notre Histoire</a></li>
+    <li><a href="#">L'App</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#">Instagram</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 ZENA — Tous droits réservés</div>
+</footer>
+
+</body>
+</html>
